@@ -1,0 +1,12 @@
+# Apply Skill — author metadata
+#
+# Copy to ${CAREER_DIR}/metadata.yaml and fill in your data. The skill reads
+# this file for default contact details (cover letter header, CV sidebar)
+# and uses ${author} as the filename author for generated PDFs.
+
+author: "Alex Beispiel"
+city: "Berlin"
+phone: "+49 30 12345678"
+email: "alex@example.com"
+linkedin: "https://www.linkedin.com/in/alex-beispiel"
+website: ""

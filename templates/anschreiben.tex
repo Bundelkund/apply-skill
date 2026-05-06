@@ -1,0 +1,57 @@
+% Pandoc XeLaTeX template for cover letters.
+% Used by Pipeline B (fallback) when headless Chrome is not available.
+%
+% Variables filled in by pandoc from the Markdown YAML frontmatter:
+%   author        — from metadata.yaml
+%   city, phone, email, linkedin — from metadata.yaml
+%   empfaenger    — from per-application frontmatter
+%   datum         — from per-application frontmatter
+%   betreff       — from per-application frontmatter
+%   body          — Markdown body
+\documentclass[11pt,a4paper]{letter}
+\usepackage{fontspec}
+\usepackage[ngerman]{babel}
+\usepackage[a4paper,top=22mm,bottom=18mm,left=24mm,right=24mm]{geometry}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=false, hidelinks}
+\setmainfont{Inter}[
+  ItalicFont={Inter Italic},
+  BoldFont={Inter SemiBold}
+]
+\definecolor{ink}{HTML}{1A1A1A}
+\definecolor{muted}{HTML}{4A4A4A}
+\color{ink}
+\renewcommand{\baselinestretch}{1.25}
+\setlength{\parskip}{0.7em}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+\begin{document}
+
+\noindent\begin{minipage}[t]{0.55\linewidth}
+  {\fontsize{20}{24}\selectfont\bfseries $author$}\\[1mm]
+  {\color{muted}\fontsize{10.5}{13}\selectfont $for(subtitle)$$subtitle$$endfor$}
+\end{minipage}\hfill\begin{minipage}[t]{0.4\linewidth}
+  \raggedleft\color{muted}\fontsize{8.5}{12}\selectfont
+  $city$\\
+  $phone$\\
+  $email$\\
+  $linkedin$
+\end{minipage}
+
+\vspace{2mm}\hrule height 1pt\vspace{6mm}
+
+\noindent$empfaenger$
+
+\vspace{6mm}
+\noindent$datum$\hfill
+
+\vspace{4mm}
+\noindent\textbf{$betreff$}
+
+\vspace{4mm}
+$body$
+
+\end{document}

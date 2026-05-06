@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Anschreiben — {{AUTHOR}} — {{COMPANY}}</title>
+<style>
+  @page { size: A4; margin: 0; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 22mm 24mm 18mm 24mm;
+    box-sizing: border-box;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6mm;
+    margin-bottom: 8mm;
+  }
+  .name { font-size: 22pt; font-weight: 700; letter-spacing: 0.5px; }
+  .subtitle { font-size: 11pt; color: #4a4a4a; margin-top: 2mm; }
+  .contact { font-size: 9pt; color: #4a4a4a; text-align: right; line-height: 1.5; }
+  .recipient {
+    margin-top: 4mm;
+    margin-bottom: 8mm;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6mm;
+    font-size: 10pt;
+  }
+  .subject { font-weight: 700; margin-bottom: 6mm; font-size: 11pt; }
+  .body p { margin: 0 0 4mm 0; text-align: justify; }
+  .closing { margin-top: 6mm; }
+  .signature { margin-top: 8mm; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div>
+      <div class="name">{{AUTHOR}}</div>
+      <div class="subtitle">{{SUBTITLE}}</div>
+    </div>
+    <div class="contact">
+      {{CITY}}<br>
+      {{PHONE}}<br>
+      {{EMAIL}}<br>
+      {{LINKEDIN}}
+    </div>
+  </div>
+
+  <div class="recipient">{{EMPFAENGER}}</div>
+
+  <div class="meta">
+    <span>{{DATUM}}</span>
+  </div>
+
+  <div class="subject">{{BETREFF}}</div>
+
+  <div class="body">
+    <p>{{ANREDE}}</p>
+    {{ABSAETZE}}
+  </div>
+
+  <div class="closing">{{GRUSSFORMEL}}</div>
+  <div class="signature">{{AUTHOR}}</div>
+</div>
+</body>
+</html>

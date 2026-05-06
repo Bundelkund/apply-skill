@@ -1,0 +1,36 @@
+# Personal career data — populated by the user, never committed
+profile/
+applications/
+output/
+*.local.yaml
+*.local.json
+
+# Resolved templates — generated from the templates/ skeleton at runtime
+templates/profile/*.local.md
+templates/metadata.yaml
+!templates/metadata.yaml.example
+
+# Environment + secrets
+.env
+.env.local
+*.key
+*.pem
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary
+*.log
+*.tmp
+*.bak
+*.backup
+__pycache__/
+node_modules/
+
+# PDFs / generated artefacts under examples/ — keep one canonical example only
+examples/*/output/*.pdf
+examples/*/output/*.html
+!examples/acme-solutions-architect/output/.gitkeep

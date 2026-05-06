@@ -1,0 +1,51 @@
+% Pandoc XeLaTeX template for the CV (fallback pipeline).
+% A single-column layout — the rich 2-column design lives in cv.html and is
+% rendered by Chrome. This template is the safe fallback for environments
+% without a browser.
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[ngerman]{babel}
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=false, hidelinks}
+\setmainfont{Inter}[
+  ItalicFont={Inter Italic},
+  BoldFont={Inter SemiBold}
+]
+\definecolor{ink}{HTML}{1A1A1A}
+\definecolor{muted}{HTML}{4A4A4A}
+\definecolor{accent}{HTML}{1F3A47}
+\color{ink}
+\titleformat{\section}{\fontsize{11}{13}\bfseries\color{accent}\MakeUppercase}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{8mm}{2mm}
+\setlist{leftmargin=4mm, itemsep=0.5mm, topsep=1mm}
+\pagestyle{empty}
+
+% Helper macros, mirror what apply-skill cover letter template uses.
+\newcommand{\cveintrag}[3]{%
+  \noindent\textbf{#1} \hfill {\color{muted}\small #2}\\
+  {\color{muted}\small #3}\par
+}
+
+\begin{document}
+
+\noindent\begin{minipage}[t]{0.55\linewidth}
+  {\fontsize{20}{24}\selectfont\bfseries $author$}\\[1mm]
+  {\color{muted}\fontsize{10.5}{13}\selectfont $for(subtitle)$$subtitle$$endfor$}
+\end{minipage}\hfill\begin{minipage}[t]{0.4\linewidth}
+  \raggedleft\color{muted}\fontsize{8.5}{12}\selectfont
+  $city$\\
+  $phone$\\
+  $email$\\
+  $linkedin$
+\end{minipage}
+
+\vspace{2mm}\hrule height 1pt
+
+$body$
+
+\end{document}
