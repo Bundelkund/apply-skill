@@ -1,63 +1,59 @@
-# Agent prompt template — /apply subagents
+# Writing reference — /apply
 
-> Condensed context block for subagents in batch mode. Instead of loading 5 profile files (~400 lines), inject this block (~80 lines). Saves ~50% tokens.
-
-## How to use
-
-When spawning `/apply` subagents, prepend this block as a context prefix:
-
-```
-Read references/agent-prompt-template.md and use it as context for the
-following application task: [...]
-```
-
-The user fills the `## Profile context` section below from their own
-`${CAREER_DIR}/profile/*.md` files. The skill never edits this file at
-runtime — it is the source of truth for tone and structure.
+> The writing rules this skill follows. Tone and structure live here — not in SKILL.md. All profile data is loaded at runtime via `get_my_profile()`.
 
 ---
 
-## Profile context ({{Author Name}})
+## Profile context (loaded at runtime)
 
-> Replace the placeholders below with content from `${CAREER_DIR}/profile/`.
-> The blocks marked `{{...}}` are the only personal data in this file.
-> An onboarding helper can be added that extracts these from `positioning.md`,
-> `achievements.md`, and `writing-style.md`.
+The five fields from `get_my_profile()` map as follows:
 
-### Positioning (from `${CAREER_DIR}/profile/positioning.md`)
+| Field | Content |
+|-------|---------|
+| `positioning` | Core narrative — three sentences, three pillars, one USP |
+| `cv_text` | Full CV as Markdown |
+| `achievements` | Quantified wins, one per row |
+| `skills_matrix` | Skills with evidence (not a self-assessment scale) |
+| `writing_style` | Tone, language rules, DON'Ts |
 
-{{positioning paragraph — three sentences, three pillars, one USP}}
+At runtime, load the full profile once via `get_my_profile()`. On edge cases (unclear fit, missing evidence) reload and re-examine the relevant field.
+
+---
+
+## Positioning structure (from `positioning`)
+
+Three sentences, three pillars, one USP.
 
 **Three pillars**:
-1. **{{Pillar 1 — e.g. Tech}}**: {{one-liner with evidence}}
-2. **{{Pillar 2 — e.g. Mediation}}**: {{one-liner with evidence}}
-3. **{{Pillar 3 — e.g. Systemic / Agile}}**: {{one-liner with evidence}}
+1. **{{Pillar 1 — e.g. Tech}}**: one-liner with evidence
+2. **{{Pillar 2 — e.g. Mediation}}**: one-liner with evidence
+3. **{{Pillar 3 — e.g. Systemic / Agile}}**: one-liner with evidence
 
-**USP**: {{the unique combination — e.g. "X + Y. I can do A AND explain B."}}
+**USP**: the unique combination — e.g. "X + Y. I can do A AND explain B."
 
-### Key achievements (from `${CAREER_DIR}/profile/achievements.md`)
+---
 
-> Quantified wins, one per row. Numbers + context + source.
+## Key achievements (from `achievements`)
+
+Quantified wins, one per row. Numbers + context + source.
 
 | Evidence | Numbers | Context |
 |----------|---------|---------|
-| {{achievement 1}} | {{number}} | {{org / year}} |
-| {{achievement 2}} | {{number}} | {{org / year}} |
-| {{achievement 3}} | {{number}} | {{org / year}} |
-| {{achievement 4}} | {{number}} | {{org / year}} |
+| achievement 1 | number | org / year |
+| achievement 2 | number | org / year |
 
-> **Composition rules**: see `${CAREER_DIR}/profile/achievements.md`. Achievements
-> from different periods MUST NOT be linked as causality unless evidence supports
-> it ("X went up BECAUSE of Y" requires a documented chain). Add explicit
-> separation rules in `achievements.md` for any pair that is often confused.
+> **Composition rules**: achievements from different periods MUST NOT be linked as causality unless evidence supports it ("X went up BECAUSE of Y" requires a documented chain).
 
-### Tone (from `${CAREER_DIR}/profile/writing-style.md`)
+---
 
-- **{{Voice — e.g. "north-German dry"}}**: {{key descriptors}}
+## Tone (from `writing_style`)
+
 - **DO**: concrete numbers, active verbs, name the impact, own projects as evidence
 - **DON'T**: abstract buzzwords ("synergies"), therapy language, passive constructions, exaggeration, frameworks without context, unchecked anglicisms (in German text)
 
-### The "Jonas rule" (cover-letter core)
+---
+
+## The "Jonas rule" (cover-letter core)
 
 > Describe how you have already solved this company's problem.
 
@@ -67,7 +63,9 @@ runtime — it is the source of truth for tone and structure.
 
 **No** achievement parade. Examples only as evidence for problem-solution.
 
-### Three-pillar composition
+---
+
+## Three-pillar composition
 
 Every cover letter has ONE leading pillar. The others serve it.
 
@@ -80,10 +78,12 @@ Every cover letter has ONE leading pillar. The others serve it.
 **Rules**:
 1. Every paragraph connects at least 2 pillars
 2. Tech projects are context, not parade
-3. Red thread = company problem -> my solution -> company benefit
+3. Red thread = company problem → my solution → company benefit
 4. Closing paragraph = what the company gets (NOT: why I want to apply)
 
-### Language rules (mandatory for German output)
+---
+
+## Language rules (mandatory for German output)
 
 - **Umlauts**: ALWAYS UTF-8 (ä, ö, ü, ß). NEVER ASCII replacements (ae, oe, ue, ss).
 - **Salutation**:
@@ -93,18 +93,24 @@ Every cover letter has ONE leading pillar. The others serve it.
   - never "Lieber/Liebe {{Name}}" — too personal
 - **Em dashes**: always `—`, never `--`
 
-### Cover-letter structure (4 paragraphs, max 1 page)
+---
 
-1. **Opening** (2-3 sentences): name the company's problem
-2. **Mediation evidence** (4-5 sentences): concrete example with numbers (lean into the leading pillar)
-3. **Second pillar** (3-4 sentences): the serving pillar reinforces
-4. **What the company gets** (2-3 sentences): concrete benefit + invitation
+## Cover-letter structure (4 paragraphs, max 1 page)
 
-### Motivation block (always personalize!)
+1. **Opening** (2–3 sentences): name the company's problem
+2. **Mediation evidence** (4–5 sentences): concrete example with numbers (lean into the leading pillar)
+3. **Second pillar** (3–4 sentences): the serving pillar reinforces
+4. **What the company gets** (2–3 sentences): concrete benefit + invitation
 
-> {{One paragraph from `${CAREER_DIR}/profile/motivation.md` — what drives you, in your own voice. Always tie it back to the concrete company.}}
+---
 
-### Anti-positioning (DO NOT use)
+## Motivation block (always personalize!)
+
+One paragraph from `positioning` — what drives you, in your own voice. Always tie it back to the concrete company.
+
+---
+
+## Anti-positioning (DO NOT use)
 
 - Generic role labels with no evidence
 - "Therapeutic AI trainer" / "Functional AI consultant" / "Digital transformation expert" — every cover letter has them, none of them mean anything
@@ -114,21 +120,9 @@ Every cover letter has ONE leading pillar. The others serve it.
 
 ## Mandatory steps (do not skip)
 
-1. **Company research before the cover letter** (WebSearch + WebFetch)
-2. **Pick the leading pillar** (from posting type -> three-pillar table)
-3. **Generate both PDFs** (cover letter + CV)
+1. **Company research before the cover letter** (web research in Phase 3a)
+2. **Pick the leading pillar** (from posting type → three-pillar table)
+3. **Produce both CV and cover letter** as polished Markdown
 4. **Keyword reconciliation** (HTML comment at the bottom of the cover letter: every must-have keyword OK / NOT OK with reasoning)
-5. **PDF validation** (page count, file size, must-have keywords)
-6. **Tracker update** (if the job came from a tracker DB)
-7. **INDEX.md update**
-
-## File references
-
-| What | Path |
-|------|------|
-| Full profile files | `${CAREER_DIR}/profile/*.md` |
-| LaTeX / HTML templates | `templates/` |
-| Application tracker | `${CAREER_DIR}/applications/INDEX.md` |
-| Skill documentation | `SKILL.md` |
-
-> When in doubt (unclear tone, missing evidence) -> reload the profile files.
+5. **Template review** (Phase 4a checklist)
+6. **Tracker update** via `save_application` (Phase 5a)
