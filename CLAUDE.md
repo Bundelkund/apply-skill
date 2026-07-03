@@ -1,6 +1,6 @@
-# Apply Skill — Desktop Variant
+# Apply Skill
 
-> Claude Desktop Agent Skill: cover-letter + CV generator from job posting to polished in-conversation Markdown.
+> Claude Agent Skill: cover-letter + CV generator from job posting to polished in-conversation Markdown.
 
 ## What
 

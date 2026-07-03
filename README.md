@@ -1,6 +1,6 @@
-# Apply Skill — Desktop Variant
+# Apply Skill
 
-> Cover-letter + CV generator from job posting to polished Markdown. Built as a Claude Desktop Agent Skill. Requires the `tenant-mcp` connector for personal data.
+> Cover-letter + CV generator from job posting to polished Markdown. Works as a Claude Agent Skill (Desktop and Claude Code plugin). Requires the tenant connector for personal data.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -18,19 +18,22 @@ All artifacts (job-fit analysis, CV, cover letter) are produced as in-conversati
 
 ## Requirements
 
-- [Claude Desktop](https://claude.ai/download) with Agent Skills support
-- `tenant-mcp` connector installed in Claude Desktop (`tenant-mcp.mcpb`) with a provisioned API key
+- Tenant connector with a provisioned API key
 - Your profile populated via `PUT /my/profile` (done by the tenant owner during onboarding)
 
 No Node.js, no local filesystem, no PDF toolchain required.
 
 ## Installation
 
+**Claude Code:** install everything at once via the plugin — `/plugin marketplace add Bundelkund/job-search-plugin` then `/plugin install job-search@konektos`.
+
+**Claude Desktop:** follow the steps below.
+
 ### 1. Add the skill to Claude Desktop
 
-Upload this skill folder (`apply-skill-desktop/`) to Claude Desktop via **Settings → Agent Skills → Add Skill**. Claude Desktop reads `SKILL.md` as the entry point.
+Upload this skill folder to Claude Desktop via **Settings → Agent Skills → Add Skill**. Claude Desktop reads `SKILL.md` as the entry point.
 
-Alternatively, point Claude Desktop at the GitHub repository URL directly if your Desktop version supports remote skills.
+Alternatively, point Claude Desktop at the GitHub repository URL directly if your version supports remote skills.
 
 ### 2. Install the tenant-mcp connector
 
@@ -43,7 +46,7 @@ The skill needs four MCP tools to read/write personal data:
 | `get_my_profile()` | Your 5-field application profile |
 | `save_application(...)` | Write a tracker entry |
 
-These tools are provided by the `tenant-mcp` connector. Install it in Claude Desktop:
+These tools are provided by the tenant connector. Install it in Claude Desktop:
 
 1. Obtain `tenant-mcp.mcpb` from the tenant owner (provisioned out-of-band)
 2. In Claude Desktop: **Settings → MCP Connectors → Install from file** → select `tenant-mcp.mcpb`
@@ -51,7 +54,7 @@ These tools are provided by the `tenant-mcp` connector. Install it in Claude Des
 
 ### 3. Verify the connection
 
-After installation, open a new Claude Desktop conversation and type:
+After installation, open a new conversation and type:
 
 ```
 get_my_matches
@@ -107,8 +110,8 @@ See `references/setup.md` for the full onboarding walkthrough.
 ## Repository layout
 
 ```
-apply-skill-desktop/
-├── SKILL.md                              — entry point, read by Claude Desktop
+apply-skill/
+├── SKILL.md                              — entry point
 ├── README.md                             — this file
 ├── LICENSE                               — MIT
 ├── .gitignore
@@ -128,7 +131,7 @@ apply-skill-desktop/
 ## Security and data handling
 
 - Personal data (profile, job matches) is fetched at runtime via MCP tools — it never lives in this repository.
-- The API key is stored in Claude Desktop's connector config, not in this skill folder.
+- The API key is stored in the connector config, not in this skill folder.
 - The fictional example uses `Alex Beispiel` / `Acme GmbH` — all names and numbers are invented.
 
 ## Contributing
