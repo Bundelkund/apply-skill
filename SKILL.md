@@ -51,13 +51,14 @@ Do **not** use for:
 
 ```
 - [ ] Job posting loaded (Phase 1)
-- [ ] job-fit-analysis produced (Phase 2a)
+- [ ] job-fit-analysis produced (Phase 2a) — incl. coverage list + gap register
 - [ ] cv-anpassung produced (Phase 2b)
 - [ ] cv produced (Phase 2c)
 - [ ] Company research done (Phase 3a)
 - [ ] Contact found or addressed generically (Phase 3b)
-- [ ] anschreiben produced (Phase 3c)
-- [ ] Template + adversarial review done (Phase 4)
+- [ ] anschreiben produced + grounding gate passed (Phase 3c)
+- [ ] Template review + content gate done (Phase 4a)
+- [ ] Adversarial review done if job-fit >= 70 (Phase 4a.5)
 - [ ] Tracker updated via save_application (Phase 5)
 ```
 

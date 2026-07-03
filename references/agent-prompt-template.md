@@ -42,7 +42,9 @@ Quantified wins, one per row. Numbers + context + source.
 | achievement 1 | number | org / year |
 | achievement 2 | number | org / year |
 
-> **Composition rules**: achievements from different periods MUST NOT be linked as causality unless evidence supports it ("X went up BECAUSE of Y" requires a documented chain).
+> **Composition rules**:
+> - Achievements from different workstreams or periods MUST NOT be linked as causality unless evidence supports it ("X went up BECAUSE of Y" requires a documented chain — e.g. two KPIs from the same project are NOT automatically causally related just because they occurred in the same role).
+> - When in doubt, present achievements as parallel, independent facts.
 
 ---
 
@@ -85,13 +87,14 @@ Every cover letter has ONE leading pillar. The others serve it.
 
 ## Language rules (mandatory for German output)
 
-- **Umlauts**: ALWAYS UTF-8 (ä, ö, ü, ß). NEVER ASCII replacements (ae, oe, ue, ss).
+- **Umlauts**: ALWAYS UTF-8 (ä, ö, ü, ß). NEVER ASCII replacements (ae, oe, ue, ss). This includes words like Führung, Veränderung, Gespräch, über, würde, Lücke, Lösung, Einführung.
 - **Salutation**:
   - formal (default): "Sehr geehrte/r Frau/Herr {{Lastname}}"
   - informal (Du-culture): "Hallo," WITHOUT a name
   - forbidden: first name in salutation, body, or closing
   - never "Lieber/Liebe {{Name}}" — too personal
 - **Em dashes**: always `—`, never `--`
+- **No standalone name line in the body**: NEVER write a bare `{{Author Name}}` line before or after the closing formula. The template renders the author name automatically from the YAML header — a duplicate name line in the body produces a double name in the rendered output. The body ends with the last paragraph; the closing formula comes from the YAML header.
 
 ---
 

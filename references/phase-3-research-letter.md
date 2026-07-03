@@ -69,4 +69,14 @@ betreff: "Bewerbung als {{Role}}"
 - Umlaut check: scan for ASCII replacements (ueber, koennen, fuer, Gruesse, Maerz, Gespraech, Loesung, etc.)
 - First-name check: no "Lieber ", "Liebe " or ", [Firstname]." in salutation or body
 
+**Grounding gate** (mandatory — before Phase 4):
+
+> Every substantive claim in the cover letter must be traceable to the profile data loaded via `get_my_profile()`. This is a verification pass, not a keyword search.
+
+1. From the cover letter, extract every **employer name, job title, skill claim, and number**.
+2. For each: does it appear in the profile (`cv_text`, `achievements`, `skills_matrix`)?
+   - **Not found** → the claim is an invention. Remove it or ask the user for a source. Never leave it as is.
+   - **Contradicted by `writing_style` DON'Ts** → correct per the rule.
+3. Only proceed to Phase 4 once every claim is traceable.
+
 **Output**: in-conversation Markdown block labelled `anschreiben`.

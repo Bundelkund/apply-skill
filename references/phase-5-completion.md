@@ -2,7 +2,7 @@
 
 ## 5a: Tracker update
 
-Call `save_application` after the cover letter is ready.
+Call `save_application` after the cover letter is ready. Do this at the end of Phase 3c (not only after Phase 4 review) so the application is logged even if the session ends before review.
 
 **First save** (end of Phase 3c or after Phase 4 review):
 

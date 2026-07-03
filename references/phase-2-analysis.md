@@ -11,6 +11,10 @@ Compare the posting (loaded via `get_job`) against `cv_text` and `achievements` 
 3. **Fit score**: strengths + risks, total 0–100
 4. **Recommendation**: apply yes/no with reasoning
 5. **Keywords for the CV**: list of terms that must appear in the CV / cover letter
+6. **Coverage list**: list every bullet under "Responsibilities" / "What you will do" as a separate row — used in Phase 4 to check that each responsibility is addressed. Do not merge distinct sub-responsibilities into one point.
+7. **Gap register**: log all gaps rated Medium or above as open items. Each must be addressed **proactively** in the cover letter — in paragraph 1 (opening), not as a closing hedge.
+8. **Channel check**: scan the posting for explicit submission instructions — salary expectation, availability, preferred hours. If the posting names a portal or form for these, they do NOT go into the cover letter.
+9. **Posting taxonomy**: note which competency dimensions the posting itself names (e.g. "AI in organizational context" + "systemic competence"). Use these as the structural axis for the cover letter instead of inventing your own categories.
 
 **Output**: in-conversation Markdown block labelled `job-fit-analysis`.
 
